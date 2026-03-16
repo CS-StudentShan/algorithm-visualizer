@@ -18,7 +18,7 @@ A high-performance, interactive sorting algorithm visualizer built with React. D
   - Space Complexity
   - Live Operation Counts (Total Swaps and Comparisons)
 - **Clock Speed Adjustments**: Adjust the animation execution speed without dropping frames.
-- **Cyberpunk UI Architecture**: Engineered a fully custom glassmorphism & neon-glow aesthetic using CSS gradients, shadow effects, and monospace typography.
+- **Cyberpunk UI Architecture**: Engineered a fully custom, authentic command-line aesthetic using CSS gradients, intense shadow glow effects, and strict monospace typography.
 
 ## 🚀 Algorithms Implemented
 

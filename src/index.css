@@ -23,11 +23,10 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background: rgba(13, 2, 8, 0.85);
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(0, 255, 65, 0.1), inset 0 0 15px rgba(0, 255, 65, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 255, 65, 0.3);
+  background: #080105; /* Solid dark terminal color instead of transparent glass */
+  border-radius: 8px; /* Sharper corners for a terminal feel */
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.15), inset 0 0 20px rgba(0, 255, 65, 0.08); /* Adjusted glow, no blur */
+  border: 1px solid rgba(0, 255, 65, 0.4);
   width: 95vw;
   max-width: 1200px;
 }
