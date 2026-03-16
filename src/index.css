@@ -1,13 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Fira Code', monospace;
+  background-color: #0d0208;
+  color: #00ff41;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* subtle scanline overlay for hacker vibe */
+  background-image: linear-gradient(
+      rgba(0, 255, 65, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(13, 2, 8, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(0, 255, 65, 0.1), inset 0 0 15px rgba(0, 255, 65, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  width: 95vw;
+  max-width: 1200px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #00ff41;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.btn {
+  background: transparent;
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+  text-transform: uppercase;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(0, 255, 65, 0.15);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  border-color: #2b4f32;
+  color: #2b4f32;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.select-dropdown {
+  background: #0d0208;
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+  transition: all 0.3s ease;
+}
+
+.select-dropdown:hover:not(:disabled) {
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+}
+
+.select-dropdown:disabled {
+  border-color: #2b4f32;
+  color: #2b4f32;
+  cursor: not-allowed;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #00ff41;
+  font-weight: 600;
+  background: rgba(0, 255, 65, 0.05);
+  padding: 8px 15px;
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  border-radius: 4px;
+}
+
+input[type="range"] {
+  accent-color: #00ff41;
+  cursor: pointer;
+}
+
+input[type="range"]:disabled {
+  accent-color: #2b4f32;
+  cursor: not-allowed;
+}
+
+.stats-dashboard {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 15px;
+  background: rgba(0, 255, 65, 0.02);
+  border-top: 1px solid rgba(0, 255, 65, 0.2);
+  border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(0, 255, 65, 0.6);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.array-container {
+  display: flex;
+  align-items: flex-end;
+  height: 400px;
+  width: 100%;
+  justify-content: center;
+  border-bottom: 2px solid #00ff41;
+  padding-bottom: 1px;
+  box-shadow: inset 0 -10px 10px -10px rgba(0, 255, 65, 0.5);
+}
+
+.array-bar {
+  background-color: #00ff41;
+  flex: 1;
+  margin: 0 1px;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+  opacity: 0.8;
 }
