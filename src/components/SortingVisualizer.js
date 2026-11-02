@@ -21,6 +21,23 @@ const ALGORITHM_INFO = {
 };
 
 export default function SortingVisualizer() {
+  // Dark mode state
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Apply dark mode class to body
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
+
+  // Load algorithm from URL query param for shareable links
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const algo = params.get('algo');
+    if (algo && Object.keys(ALGORITHM_INFO).includes(algo)) {
+      setSelectedAlgo(algo);
+    }
+  }, []);
+
   const [array, setArray] = useState([]);
   const [isSorting, setIsSorting] = useState(false);
   const [animationSpeed, setAnimationSpeed] = useState(50);
@@ -39,7 +56,34 @@ export default function SortingVisualizer() {
   }, [arraySize]);
 
   const generateArray = (size = arraySize) => {
-    if (isSorting) return;
+
+    const arr = [];
+    for (let i = 0; i < size; i++) {
+        arr.push(Math.floor(Math.random() * (DEFAULT_MAX_HEIGHT - 10 + 1) + 10));
+    }
+    setArray(arr);
+    // Reset stats & colors
+    setComparisons(0);
+    setSwaps(0);
+    const arrayBars = document.getElementsByClassName('array-bar');
+    for (let i = 0; i < arrayBars.length; i++) {
+        arrayBars[i].style.backgroundColor = PRIMARY_COLOR;
+    }
+  };
+
+  // Copy the current page URL (including selected algorithm) to clipboard
+  const copyShareableLink = () => {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('algo', selectedAlgo);
+      navigator.clipboard.writeText(url.toString());
+      alert('Shareable link copied to clipboard!');
+    } catch (e) {
+      console.error('Copy failed', e);
+      alert('Failed to copy link');
+    }
+  };
+
     const arr = [];
     for (let i = 0; i < size; i++) {
         arr.push(Math.floor(Math.random() * (DEFAULT_MAX_HEIGHT - 10 + 1) + 10));
@@ -68,7 +112,7 @@ export default function SortingVisualizer() {
   };
 
   const handleSort = () => {
-    if (isSorting) return;
+
     const animations = getAnimations();
     executeAnimations(animations);
   };
@@ -157,9 +201,17 @@ export default function SortingVisualizer() {
       </div>
 
       <div className="controls">
-        <button className="btn" onClick={() => generateArray()} disabled={isSorting}>
-          [ Generate Data ]
-        </button>
+        <button className="btn" onClick={() => generateArray()} disabled={isSorting}>Generate Data</button>
+        {/* Dark Mode Toggle */}
+        <button className="btn" onClick={() => setDarkMode(prev => !prev)} disabled={isSorting} style={{ marginLeft: '8px' }}>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+
+        {/* Copy Shareable Link */}
+        <button className="btn" onClick={copyShareableLink} disabled={isSorting} style={{ marginLeft: '8px' }}>
+          Copy Shareable Link
+
+
+
         
         <select 
           className="select-dropdown" 
@@ -177,7 +229,7 @@ export default function SortingVisualizer() {
         
         <button className="btn" onClick={handleSort} disabled={isSorting}>
           &gt; Execute Sort_
-        </button>
+
         
         <div className="slider-container">
             <label>Clock_Spd:</label>
