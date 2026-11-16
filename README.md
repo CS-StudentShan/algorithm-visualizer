@@ -1,5 +1,7 @@
 # 💻 Algorithm Visualizer
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-00ff41?style=for-the-badge)](https://algorithm-visualizer.vercel.app)
+
 ![Matrix Theme Preview](https://img.shields.io/badge/UI-Matrix%20Theme-00FF41?style=for-the-badge&logoColor=black)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
