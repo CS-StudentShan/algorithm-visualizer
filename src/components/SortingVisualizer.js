@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getMergeSortAnimations } from '../algorithms/mergeSort';
 import { getBubbleSortAnimations } from '../algorithms/bubbleSort';
 import { getQuickSortAnimations } from '../algorithms/quickSort';
@@ -83,8 +83,6 @@ export default function SortingVisualizer() {
       console.error('Copy failed', e);
       alert('Failed to copy link');
     }
-  };
-
   };
 
   const executeAnimations = (animations) => {
