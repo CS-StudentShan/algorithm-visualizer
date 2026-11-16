@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { getMergeSortAnimations } from '../algorithms/mergeSort';
 import { getBubbleSortAnimations } from '../algorithms/bubbleSort';
 import { getQuickSortAnimations } from '../algorithms/quickSort';
@@ -13,10 +13,10 @@ const SUCCESS_COLOR = '#ffffff'; // White flash for sorted
 
 const ALGORITHM_INFO = {
   mergeSort: { name: 'Merge Sort', time: 'O(N log N)', space: 'O(N)' },
-  bubbleSort: { name: 'Bubble Sort', time: 'O(NÂ²)', space: 'O(1)' },
+  bubbleSort: { name: 'Bubble Sort', time: 'O(NÃ‚Â²)', space: 'O(1)' },
   quickSort: { name: 'Quick Sort', time: 'O(N log N)', space: 'O(log N)' },
-  insertionSort: { name: 'Insertion Sort', time: 'O(NÂ²)', space: 'O(1)' },
-  selectionSort: { name: 'Selection Sort', time: 'O(NÂ²)', space: 'O(1)' },
+  insertionSort: { name: 'Insertion Sort', time: 'O(NÃ‚Â²)', space: 'O(1)' },
+  selectionSort: { name: 'Selection Sort', time: 'O(NÃ‚Â²)', space: 'O(1)' },
   heapSort: { name: 'Heap Sort', time: 'O(N log N)', space: 'O(1)' },
 };
 
@@ -172,7 +172,7 @@ export default function SortingVisualizer() {
 
       <div className="controls">
         <button className="btn" onClick={() => generateArray()} disabled={isSorting}>Generate Data</button>
-  // Simple sort dispatcher – calls the appropriate animation generator
+  // Simple sort dispatcher â€“ calls the appropriate animation generator
   const handleSort = () => {
     switch (selectedAlgo) {
       case 'mergeSort':
