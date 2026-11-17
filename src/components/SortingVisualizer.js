@@ -170,8 +170,8 @@ export default function SortingVisualizer() {
 
       <div className="controls">
         <button className="btn" onClick={() => generateArray()} disabled={isSorting}>Generate Data</button>
-  // Simple sort dispatcher â€“ calls the appropriate animation generator
-  const handleSort = () => {
+  // Simple sort dispatcher - calls the appropriate animation generator
+  function handleSort() {
     switch (selectedAlgo) {
       case 'mergeSort':
         const mergeAnimations = getMergeSortAnimations(array);
